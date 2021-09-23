@@ -1,6 +1,7 @@
 import { CSSProperties, ReactNode, useEffect, Children } from 'react';
 import { NextRouter, useRouter } from 'next/router';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/modules/header.module.css';
 import { products } from '../helpers/contants';
 
@@ -168,27 +169,42 @@ export default function Header(props: Props): JSX.Element {
  */
 const links: ReactNode = [
     // 0
-    <a href="/" >Ínicio</a>,
+    <Link href="/">
+        <a>Ínicio</a>
+    </Link>,
     // 1
-    <a href="/about" >A timar</a>,
+    <Link href="/about">
+        <a>A timar</a>
+    </Link>,
     // 2
     <>
-        {/* <a href="/products" >Produtos</a> */}
-        <a href="/products">Produtos</a>
+        <Link href="/products">
+            <a>Produtos</a>
+        </Link>
         <ul 
             id="submenu"
             className={styles.submenu} >
             {
                 products.map((product: string, index: number) => {
-                    return (<li key={index} ><a href={`/products/${product.toLowerCase()}`} >{product}</a></li>)
+                    return (
+                        <li key={index}>
+                            <Link href={`/products/${product.toLowerCase()}`}>
+                                <a>{product}</a>
+                            </Link>
+                        </li>
+                    );
                 })
             }
         </ul>
     </>,
     // 3
-    <a href="/tips" >Dicas</a>,
+    <Link href="/tips">
+        <a>Dicas</a>
+    </Link>,
     // 4
-    <a href="/contactus" >Fale conosco</a>
+    <Link href="/contactus">
+        <a>Fale conosco</a>
+    </Link>
 ];
 
 /**
