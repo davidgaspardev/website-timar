@@ -1,0 +1,126 @@
+header.container {
+    width: 100%;
+    height: 60px;
+    padding: 0px 11px 0px 16px;
+    border-right: 5px solid var(--color-primary-orange);
+
+    background-color: var(--color-primary-blue);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.menuIconContainer {
+    display: none;
+    width: 40px;
+    width: 40px;
+}
+
+nav.menuContainer {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    color: white;
+    /* font-weight: bold; */
+}
+
+nav.menuContainer > div {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    display: none;
+}
+
+ul.menu {
+    list-style: none;
+    padding: 0px;
+}
+
+ul.menu > li > a {
+    padding: 6px 8px;
+    border-radius: 3px;
+    margin: 0px 8px;
+}
+
+ul.menu > li > a:hover {
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    color: var(--color-primary-orange);
+}
+
+ul.menu > li {
+    position: relative;
+    float: left;
+    text-align: center;
+}
+
+ul.submenu {
+    position: absolute;
+    top: 25px;
+    display: none;
+    background-color: var(--color-primary-orange);
+    border-radius: 5px;
+    list-style: none;
+    padding: 5px 0px;
+}
+
+ul.submenu li {
+    text-align: start;
+    float: none;
+    color: white;
+}
+
+ul.submenu li a {
+    padding: 5px 10px;
+    width: 100%;
+    display: block;
+}
+
+ul.submenu li:hover {
+    background-color: var(--color-primary-blue);
+}
+
+@media only screen and (max-width: 700px) {
+
+    div.menuIconContainer {
+        display: block;
+    }
+
+    /* Move menu to draw */
+    nav.menuContainer {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        right: -100vw;
+        background-color: var(--color-primary-blue);
+
+        transition: right ease 750ms;
+        -o-transition: right ease 750ms;
+        -ms-transition: right ease 750ms;
+        -moz-transition: right ease 750ms;
+        -webkit-transition: right ease 750ms;
+    }
+    nav.menuContainer > div {
+        display: block;
+    }
+    ul.menu > li {
+        float: none;
+        text-align: start;
+        width: 70vw;
+        padding: 5px 0px;
+    }
+    ul.submenu {
+        margin-top: 5px;
+        margin-left: 15px;
+        position: inherit;
+        top: 0px;
+        display: block;
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 60vw;
+    }
+}
