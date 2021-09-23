@@ -172,7 +172,7 @@ export default function Header(props: Props): JSX.Element {
                 <ul className={styles.menu}>
 
                     {
-                        Children.map(links, (link, index: number) => {
+                        links.map((link: JSX.Element, index: number) => {
                             return (
                                 <li key={index}> { link }</li>
                             );
@@ -191,7 +191,7 @@ export default function Header(props: Props): JSX.Element {
  * 
  * @type {ReactNode}
  */
-const links: ReactNode = [
+const links: JSX.Element[] = [
     // 0
     <Link href="/">
         <a>Ínicio</a>
