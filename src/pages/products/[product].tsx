@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from 'querystring';
+import { Header } from "../../components";
 
 /**
  * Producr Page
@@ -13,6 +14,7 @@ export default function ProductPage(): JSX.Element {
 
     return (
         <div>
+            <Header />
             <h1>{product} page</h1>
         </div>
     );
