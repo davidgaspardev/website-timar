@@ -131,12 +131,14 @@ export default function Header(props: Props): JSX.Element {
 
             <Image 
                 src="/assets/svg/logo-negative.svg"
+                alt="Logo"
                 width={120}
                 height={45} />
 
             <div className={styles.menuIconContainer} onClick={menu.show} >
                 <Image
                     src="/assets/svg/menu.svg"
+                    alt="Menu"
                     width={35}
                     height={35} />
             </div>
