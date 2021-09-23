@@ -171,13 +171,46 @@ export default function Header(props: Props): JSX.Element {
                 <div onClick={menu.hide} >X</div>
                 <ul className={styles.menu}>
 
-                    {
-                        links.map((link: JSX.Element, index: number) => {
-                            return (
-                                <li key={index}> { link }</li>
-                            );
-                        })
-                    }
+                    <li>
+                        <Link href="/">
+                            <a>Ínicio</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/about">
+                            <a>A timar</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/products">
+                            <a>Produtos</a>
+                        </Link>
+                        <ul
+                            id="submenu"
+                            className={styles.submenu} >
+                            {
+                                products.map((product: string, index: number) => {
+                                    return (
+                                        <li key={index}>
+                                            <Link href={`/products/${product.toLowerCase()}`}>
+                                                <a>{product}</a>
+                                            </Link>
+                                        </li>
+                                    );
+                                })
+                            }
+                        </ul>
+                    </li>
+                    <li>
+                        <Link href="/tips">
+                            <a>Dicas</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/contactus">
+                            <a>Fale conosco</a>
+                        </Link>
+                    </li>
 
                 </ul>
             </nav>
@@ -185,51 +218,6 @@ export default function Header(props: Props): JSX.Element {
         </header>
     );
 }
-
-/**
- * Navigation links
- * 
- * @type {ReactNode}
- */
-const links: JSX.Element[] = [
-    // 0
-    <Link href="/">
-        <a>Ínicio</a>
-    </Link>,
-    // 1
-    <Link href="/about">
-        <a>A timar</a>
-    </Link>,
-    // 2
-    <>
-        <Link href="/products">
-            <a>Produtos</a>
-        </Link>
-        <ul 
-            id="submenu"
-            className={styles.submenu} >
-            {
-                products.map((product: string, index: number) => {
-                    return (
-                        <li key={index}>
-                            <Link href={`/products/${product.toLowerCase()}`}>
-                                <a>{product}</a>
-                            </Link>
-                        </li>
-                    );
-                })
-            }
-        </ul>
-    </>,
-    // 3
-    <Link href="/tips">
-        <a>Dicas</a>
-    </Link>,
-    // 4
-    <Link href="/contactus">
-        <a>Fale conosco</a>
-    </Link>
-];
 
 /**
  * Setting resize listener
