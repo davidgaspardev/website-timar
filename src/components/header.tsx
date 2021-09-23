@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/modules/header.module.css';
 import { products } from '../helpers/contants';
+import { getActiveLinkIndex } from './utils/links';
 
 /**
  * Menu control
@@ -103,7 +104,7 @@ export default function Header(props: Props): JSX.Element {
     const { containerStyle, mode }: Props = props;
     const { asPath }: NextRouter = useRouter();
 
-    const navIndex = linkActive(asPath);
+    const navIndex = getActiveLinkIndex(asPath);
 
     function loadContainerStyle(): CSSProperties | undefined {
         return mode === "scroll-to-fixed" ? {
@@ -302,15 +303,4 @@ function setScrollListener(header: HTMLElement) {
 function configHeightViewPort() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-function linkActive(path: string): number {
-    switch(path) {
-        case "/": return 0;
-        case "/about": return 1;
-        case "/products": return 2;
-        case "/tips": return 3;
-        case "/contactus": return 4;
-        default: return -1;
-    }
 }
