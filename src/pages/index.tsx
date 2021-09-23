@@ -28,7 +28,7 @@ export default function HomePage(): JSX.Element {
 
                 </BannerSlider>
 
-                <Header id="header-main" mode="scroll-to-fixed" />
+                <Header mode="scroll-to-fixed" />
 
             </section>
 

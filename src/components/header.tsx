@@ -87,7 +87,6 @@ const submenu = {
 };
 
 type Props = {
-    id: string;
     containerStyle?: CSSProperties;
     mode?: "fixed" | "scroll-to-fixed";
     children?: ReactNode;
@@ -100,7 +99,7 @@ type Props = {
  */
 export default function Header(props: Props): JSX.Element {
     // Destructuring assignment
-    const { id, containerStyle, mode }: Props = props;
+    const { containerStyle, mode }: Props = props;
     const { asPath }: NextRouter = useRouter();
 
     const navIndex = linkActive(asPath);
@@ -116,24 +115,24 @@ export default function Header(props: Props): JSX.Element {
 
     useEffect(() => {
         if(mode === "scroll-to-fixed") {
-            const header = document.getElementById(id);
+            const header = document.getElementById("header");
 
             if(header) setScrollListener(header);
         }
 
         setResizeListener();
-    }, []);
+    }, [ mode ]);
     
     // Return component
     return (
-        <header id={id} className={styles.container} style={loadContainerStyle()} >
+        <header id={"header"} className={styles.container} style={loadContainerStyle()} >
 
             <Image 
                 src="/assets/svg/logo-negative.svg"
                 width={120}
                 height={45} />
 
-            <div id={`${id}-menu-icon`} className={styles.menuIconContainer} onClick={menu.show} >
+            <div className={styles.menuIconContainer} onClick={menu.show} >
                 <Image
                     src="/assets/svg/menu.svg"
                     width={35}
