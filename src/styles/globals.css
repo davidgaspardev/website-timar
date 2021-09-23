@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --color-primary-blue: #1D1C39;
+  --color-primary-orange: #E4391F;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, a, p {
+  font-family: 'Heebo', sans-serif;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+section.block {
+  /* dimensions */
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* =========== COMMON STYLES =========== */
+
+.children-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reference {
+  position: relative;
+}
