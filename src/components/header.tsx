@@ -163,12 +163,27 @@ export default function Header(props: Props): JSX.Element {
                 <Image
                     src="/assets/svg/menu.svg"
                     alt="Menu"
-                    width={35}
-                    height={35} />
+                    width={30}
+                    height={30} />
             </div>
 
             <nav id={"nav-menu"} className={styles.menuContainer}>
-                <div onClick={menu.hide} >X</div>
+
+                { /** header for navigation menu on small screens (mobile) */ }
+                <header>
+                    <Image 
+                        src="/assets/svg/logo-mini.svg"
+                        alt="Mini logo"
+                        width={30}
+                        height={30}/>
+                    <Image
+                        src="/assets/svg/close.svg"
+                        alt="Close"
+                        onClick={menu.hide}
+                        width={16}
+                        height={16}/>
+                </header>
+
                 <ul className={styles.menu}>
 
                     <li>

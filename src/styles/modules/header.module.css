@@ -28,12 +28,18 @@ nav.menuContainer {
     /* font-weight: bold; */
 }
 
-nav.menuContainer > div {
+nav.menuContainer > header {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 60px;
     color: white;
+    padding: 0px 20px;
     display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 ul.menu {
@@ -106,8 +112,8 @@ ul.submenu a:hover {
         -moz-transition: right ease 750ms;
         -webkit-transition: right ease 750ms;
     }
-    nav.menuContainer > div {
-        display: block;
+    nav.menuContainer > header {
+        display: flex;
     }
     ul.menu > li {
         float: none;
