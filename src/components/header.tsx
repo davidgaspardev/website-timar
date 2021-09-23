@@ -4,12 +4,30 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/modules/header.module.css';
 import { products } from '../helpers/contants';
-import { getActiveLinkIndex } from './utils/links';
 
 /**
  * Menu control
  */
 const menu = {
+    getAllLinks: function () {
+        const allLinks = document.getElementsByTagName('a');
+        const links: HTMLElement[] = [];
+
+        for(let i = 0; i < allLinks.length; i++) {
+            links.push(allLinks.item(i) as HTMLElement);
+        }
+        return links;
+    },
+    getLink: function (pathname: string) {
+        const allLinks = document.getElementsByTagName('a');
+
+        for(let i = 0; i < allLinks.length; i++) {
+            if(allLinks.item(i)?.pathname === pathname) {
+                return allLinks.item(i) as HTMLElement;
+            }
+        }
+        console.error(`Link with this pathname (${pathname}) don't exists`);
+    },
     get: function () {
         const menu: HTMLElement | null = document.getElementById("nav-menu");
         // Checking if exists
@@ -104,8 +122,6 @@ export default function Header(props: Props): JSX.Element {
     const { containerStyle, mode }: Props = props;
     const { asPath }: NextRouter = useRouter();
 
-    const navIndex = getActiveLinkIndex(asPath);
-
     function loadContainerStyle(): CSSProperties | undefined {
         return mode === "scroll-to-fixed" ? {
             position: "absolute",
@@ -122,8 +138,16 @@ export default function Header(props: Props): JSX.Element {
             if(header) setScrollListener(header);
         }
 
+        menu.getAllLinks().forEach((link: HTMLElement) => {
+            link.style.color = "white";
+        });
+
+        // Config color to current page link
+        const currentLink = menu.getLink(asPath);
+        if(currentLink) currentLink.style.color = `var(--color-primary-${asPath.split("/").length > 2 ? "blue" : "orange"})`; 
+
         setResizeListener();
-    }, [ mode ]);
+    }, [ mode, asPath ]);
     
     // Return component
     return (
@@ -149,11 +173,8 @@ export default function Header(props: Props): JSX.Element {
 
                     {
                         Children.map(links, (link, index: number) => {
-                            const selected = navIndex === index;
                             return (
-                                <li key={index} style={{
-                                    color: selected ? "var(--color-primary-orange)" : "white",
-                                }}> { link }</li>
+                                <li key={index}> { link }</li>
                             );
                         })
                     }
